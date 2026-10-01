@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep Phase 1 static-first; the quote form validates in-browser and hands the prepared enquiry to WhatsApp because persistent delivery is not in scope.
