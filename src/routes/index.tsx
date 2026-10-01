@@ -178,9 +178,9 @@ function HomePage() {
     const locality = String(data.get("locality") ?? "").trim();
     const details = String(data.get("details") ?? "").trim();
     const nextErrors: Record<string, string> = {};
-    if (!name) nextErrors.name = "Please enter your name.";
-    if (phone.length !== 10) nextErrors.phone = "Please enter a valid 10-digit Indian mobile number.";
-    if (!locality) nextErrors.locality = "Please enter your area or locality.";
+    if (!name) nextErrors["name"] = "Please enter your name.";
+    if (phone.length !== 10) nextErrors["phone"] = "Please enter a valid 10-digit Indian mobile number.";
+    if (!locality) nextErrors["locality"] = "Please enter your area or locality.";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
