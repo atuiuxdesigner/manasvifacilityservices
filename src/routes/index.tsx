@@ -30,7 +30,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import heroImage from "@/assets/manasvi/hero.jpg";
+import teamBanner from "@/assets/team-banner.png.asset.json";
+import teamPoster from "@/assets/team-poster.png.asset.json";
 import aboutImage from "@/assets/manasvi/about.jpg";
 import officeImage from "@/assets/manasvi/office.jpg";
 import clinicImage from "@/assets/manasvi/clinic.jpg";
@@ -233,10 +234,21 @@ function HomePage() {
       </header>
 
       <main>
-        <section className="relative min-h-[600px] overflow-hidden bg-hero-surface md:min-h-[610px]">
-          <img src={heroImage} alt="Manasvi Facility Services team at their Pune office" className="absolute inset-0 h-full w-full object-cover object-[68%_center]" />
-          <div className="absolute inset-0 bg-hero-wash" />
-          <div className="page-shell relative flex min-h-[600px] items-end pb-12 pt-12 md:min-h-[610px] md:items-center md:pb-16 md:pt-16">
+        <section className="relative overflow-hidden bg-hero-surface">
+          <img
+            src={teamBanner.url}
+            alt="Manasvi Facility Services team at their Pune office"
+            className="absolute inset-0 hidden h-full w-full object-cover object-[70%_center] md:block"
+          />
+          <div className="absolute inset-0 hidden bg-hero-wash md:block" />
+          <div className="md:hidden">
+            <img
+              src={teamPoster.url}
+              alt="Manasvi Facility Services team at their Pune office"
+              className="max-h-[62vh] w-full object-cover object-top"
+            />
+          </div>
+          <div className="page-shell relative flex flex-col pb-12 pt-10 md:min-h-[610px] md:flex-row md:items-center md:pb-16 md:pt-16">
             <div className="max-w-xl">
               <p className="eyebrow"><span className="size-1.5 rounded-full bg-service" /> Cleaning & facility support in Pune</p>
               <h1 className="mt-5 text-4xl font-extrabold leading-[1.02] md:text-6xl">Clean spaces.<br />Reliable people.<br /><span className="text-primary">Better workplaces.</span></h1>
