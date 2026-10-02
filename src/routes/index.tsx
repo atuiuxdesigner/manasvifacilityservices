@@ -243,7 +243,7 @@ function HomePage() {
           <div className="absolute inset-0 hidden bg-hero-wash md:block" />
           <div className="md:hidden">
             <img
-              src={teamPoster}
+              src={teamPoster.url}
               alt="Manasvi Facility Services team at their Pune office"
               className="max-h-[62vh] w-full object-cover object-top"
             />
