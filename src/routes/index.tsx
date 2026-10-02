@@ -236,7 +236,7 @@ function HomePage() {
       <main>
         <section className="relative overflow-hidden bg-hero-surface">
           <img
-            src={teamBanner}
+            src={teamBanner.url}
             alt="Manasvi Facility Services team at their Pune office"
             className="absolute inset-0 hidden h-full w-full object-cover object-[70%_center] md:block"
           />
