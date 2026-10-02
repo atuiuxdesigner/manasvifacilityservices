@@ -32,6 +32,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import teamBanner from "@/assets/team-banner.png.asset.json";
 import teamPoster from "@/assets/team-poster.png.asset.json";
+import manasviLogo from "@/assets/manasvi-logo.svg.asset.json";
 import aboutImage from "@/assets/manasvi/about.jpg";
 import officeImage from "@/assets/manasvi/office.jpg";
 import clinicImage from "@/assets/manasvi/clinic.jpg";
@@ -147,16 +148,20 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-function Brand() {
+function Brand({ onDark = false }: { onDark?: boolean }) {
   return (
-    <a href="#top" className="flex items-center gap-2" aria-label="Manasvi Facility Services home">
-      <span className="grid size-9 place-items-center rounded-full bg-brand-soft text-primary">
-        <Sparkles className="size-5" aria-hidden="true" />
-      </span>
-      <span className="leading-none">
-        <strong className="block text-sm font-extrabold text-primary">MANASVI</strong>
-        <span className="text-[9px] font-semibold uppercase text-muted-foreground">Facility Services</span>
-      </span>
+    <a
+      href="#top"
+      aria-label="Manasvi Facility Services home"
+      className={onDark ? "inline-flex items-center rounded-lg bg-card px-3 py-2" : "inline-flex items-center"}
+    >
+      <img
+        src={manasviLogo.url}
+        alt="Manasvi Facility Services logo"
+        width={112}
+        height={42}
+        className={onDark ? "h-9 w-auto" : "h-10 w-auto"}
+      />
     </a>
   );
 }
@@ -352,7 +357,7 @@ function HomePage() {
         <section className="bg-primary py-10 text-primary-foreground"><div className="page-shell flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><div><h2 className="text-2xl font-bold">Ready for a cleaner, better-run space?</h2><p className="mt-2 text-sm opacity-80">Call, WhatsApp or request a quote. We’ll help you choose the right next step.</p></div><div className="flex gap-3"><Button asChild className="rounded-full bg-service text-service-foreground hover:bg-service/90"><a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp Us</a></Button><Button asChild variant="secondary" className="rounded-full"><a href={`tel:${PHONE}`}>Call Now</a></Button></div></div></section>
       </main>
 
-      <footer id="contact" className="scroll-mt-20 bg-navy py-12 text-navy-foreground"><div className="page-shell grid gap-9 sm:grid-cols-2 lg:grid-cols-[1.3fr_.7fr_.7fr_1.3fr]"><div><Brand /><p className="mt-5 max-w-xs text-xs leading-5 text-navy-muted">Professional cleaning, housekeeping and manpower support for Pune and Pimpri-Chinchwad.</p><p className="mt-4 text-xs"><strong>Proprietor</strong> · Manju Waghmare</p></div><div><h3 className="footer-title">Services</h3><ul className="footer-list">{services.slice(0,4).map((item) => <li key={item.name}><a href="#services">{item.name}</a></li>)}</ul></div><div><h3 className="footer-title">Company</h3><ul className="footer-list"><li><a href="#about">About Manasvi</a></li><li><a href="#process">How it works</a></li><li><a href="#coverage">Coverage</a></li><li><a href="#quote">Request a quote</a></li></ul></div><div><h3 className="footer-title">Contact</h3><ul className="footer-list"><li><a href={`tel:${PHONE}`}>{PHONE_LABEL} · {SECONDARY_PHONE_LABEL}</a></li><li><a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp +91 9270868493</a></li><li><a className="break-all" href="mailto:manesiifacilityservices@gmail.com">manesiifacilityservices@gmail.com</a></li><li>Lamhe, 15, SRA Building C Wing, Ground Floor, Viman Nagar, Pune–411016</li><li>Monday – Saturday, 09:00–18:00</li></ul></div></div><div className="page-shell mt-10 flex flex-col gap-2 border-t border-navy-line pt-5 text-[10px] text-navy-muted sm:flex-row sm:justify-between"><span>© Manasvi Facility Services. All rights reserved.</span><span>Pune · Pimpri-Chinchwad</span></div></footer>
+      <footer id="contact" className="scroll-mt-20 bg-navy py-12 text-navy-foreground"><div className="page-shell grid gap-9 sm:grid-cols-2 lg:grid-cols-[1.3fr_.7fr_.7fr_1.3fr]"><div><Brand onDark /><p className="mt-5 max-w-xs text-xs leading-5 text-navy-muted">Professional cleaning, housekeeping and manpower support for Pune and Pimpri-Chinchwad.</p><p className="mt-4 text-xs"><strong>Proprietor</strong> · Manju Waghmare</p></div><div><h3 className="footer-title">Services</h3><ul className="footer-list">{services.slice(0,4).map((item) => <li key={item.name}><a href="#services">{item.name}</a></li>)}</ul></div><div><h3 className="footer-title">Company</h3><ul className="footer-list"><li><a href="#about">About Manasvi</a></li><li><a href="#process">How it works</a></li><li><a href="#coverage">Coverage</a></li><li><a href="#quote">Request a quote</a></li></ul></div><div><h3 className="footer-title">Contact</h3><ul className="footer-list"><li><a href={`tel:${PHONE}`}>{PHONE_LABEL} · {SECONDARY_PHONE_LABEL}</a></li><li><a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp +91 9270868493</a></li><li><a className="break-all" href="mailto:manesiifacilityservices@gmail.com">manesiifacilityservices@gmail.com</a></li><li>Lamhe, 15, SRA Building C Wing, Ground Floor, Viman Nagar, Pune–411016</li><li>Monday – Saturday, 09:00–18:00</li></ul></div></div><div className="page-shell mt-10 flex flex-col gap-2 border-t border-navy-line pt-5 text-[10px] text-navy-muted sm:flex-row sm:justify-between"><span>© Manasvi Facility Services. All rights reserved.</span><span>Pune · Pimpri-Chinchwad</span></div></footer>
 
       <div className="fixed inset-x-0 bottom-0 z-50 grid h-16 grid-cols-3 border-t border-border bg-background shadow-mobile md:hidden">
         <a className="mobile-action" href={`tel:${PHONE}`}><Phone />Call</a><a className="mobile-action text-service" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer"><HeartHandshake />WhatsApp</a><a className="mobile-action text-primary" href="#quote"><ArrowRight />Quote</a>
