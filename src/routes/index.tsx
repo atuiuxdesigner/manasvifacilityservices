@@ -6,6 +6,7 @@ import {
   Check,
   ChevronRight,
   Clock3,
+  ExternalLink,
   HeartHandshake,
   Home,
   Mail,
@@ -38,7 +39,6 @@ import officeImage from "@/assets/manasvi/office.jpg";
 import clinicImage from "@/assets/manasvi/clinic.jpg";
 import societyImage from "@/assets/manasvi/society.jpg";
 import homeImage from "@/assets/manasvi/home.jpg";
-import mapImage from "@/assets/manasvi/map.jpg";
 import inaugurationImage from "@/assets/manasvi/inauguration.jpg";
 import teamImage from "@/assets/manasvi/team.jpg";
 import detailImage from "@/assets/manasvi/detail.jpg";
@@ -49,6 +49,11 @@ const PHONE = "+917387602344";
 const PHONE_LABEL = "+91 7387602344";
 const SECONDARY_PHONE_LABEL = "+91 7376341891";
 const WHATSAPP = "919270868493";
+// Business location shared by the Google Business Profile listing.
+const MAP_EMBED_SRC =
+  "https://maps.google.com/maps?q=Manasvi%20Facility%20Services%2C%20SRA%20Building%2C%20Lane%20No.%2013%2C%20Viman%20Nagar%2C%20Pune&z=16&output=embed";
+const GOOGLE_MAPS_PLACE_URL =
+  "https://www.google.com/maps/place/?q=place_id:ChIJMzXNyE3BwjsRop7cIuWIDqQ";
 
 const services = [
   {
@@ -333,7 +338,7 @@ function HomePage() {
 
         <section id="coverage" className="section-space scroll-mt-20 bg-navy text-navy-foreground">
           <div className="page-shell grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center md:gap-16"><div><p className="eyebrow text-service">Pune + PMC</p><h2 className="mt-3 text-3xl font-bold md:text-4xl">Local reach, direct coordination.</h2><p className="mt-4 text-sm leading-6 text-navy-muted">Tell us where your space is and what support you need. We serve offices, clinics, societies and homes across Pune and Pimpri-Chinchwad.</p><div className="mt-5 flex flex-wrap gap-2">{["Pune", "Pimpri", "Chinchwad", "Viman Nagar", "Nearby areas"].map((place) => <span key={place} className="rounded-full border border-navy-line px-3 py-1 text-[11px]">{place}</span>)}</div><Button asChild variant="secondary" className="mt-6 rounded-full"><a href="#quote">Check service availability <ArrowRight /></a></Button></div>
-            <div className="overflow-hidden rounded-xl bg-background p-2"><img src={mapImage} alt="Map showing Manasvi Facility Services in Pune" className="aspect-[16/9] w-full rounded-lg object-cover" loading="lazy" /></div></div>
+            <div className="overflow-hidden rounded-xl bg-background p-2"><iframe src={MAP_EMBED_SRC} title="Google Map showing Manasvi Facility Services in Viman Nagar, Pune" className="aspect-[16/9] w-full rounded-lg border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /><a href={GOOGLE_MAPS_PLACE_URL} target="_blank" rel="noreferrer" className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-service py-2.5 text-sm font-bold text-service-foreground transition-colors hover:bg-service/90">View our Google Business Profile <ExternalLink className="size-4" /></a></div></div>
         </section>
 
         <section className="section-space">
