@@ -123,10 +123,10 @@ export const Route = createFileRoute("/")({
         content: "Clean spaces, reliable people and practical local support across Pune and Pimpri-Chinchwad.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://manasvifacilityservices.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://manasvifacilityservices.lovable.app/" }],
     scripts: [
       {
         type: "application/ld+json",
