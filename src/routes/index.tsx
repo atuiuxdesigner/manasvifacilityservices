@@ -331,7 +331,7 @@ function HomePage() {
         </section>
 
         <section id="process" className="section-space scroll-mt-20 bg-blue-surface">
-          <div className="page-shell"><div className="text-center"><p className="eyebrow justify-center">How it works</p><h2 className="section-title mt-3">A clear path from first call to ready space.</h2><p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">No confusing packages. We begin with your need, agree the plan and keep coordination straightforward.</p></div>
+          <div className="page-shell"><div className="text-center"><p className="eyebrow justify-center">How it works</p><h2 className="section-title mx-auto mt-3">A clear path from first call to ready space.</h2><p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">No confusing packages. We begin with your need, agree the plan and keep coordination straightforward.</p></div>
             <ol className="mt-10 grid gap-4 md:grid-cols-4">{processSteps.map(([number, title, text]) => <li key={number} className="rounded-lg bg-background p-5"><span className="text-xs font-extrabold text-service">{number}</span><h3 className="mt-7 font-bold">{title}</h3><p className="mt-2 min-h-12 text-xs leading-5 text-muted-foreground">{text}</p><div className="mt-5 h-0.5 bg-service/60" /></li>)}</ol>
           </div>
         </section>
