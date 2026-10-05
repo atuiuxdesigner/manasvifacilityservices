@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep Phase 1 static-first; the quote form validates in-browser and hands the prepared enquiry to WhatsApp because persistent delivery is not in scope.
+- Keep navigation collapsed below 1024px, use staged tablet grids, and reserve dense multi-column layouts for wide screens so all content remains readable without horizontal overflow.
