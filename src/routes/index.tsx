@@ -45,9 +45,8 @@ import detailImage from "@/assets/manasvi/detail.jpg";
 import lobbyImage from "@/assets/manasvi/lobby.jpg";
 import equipmentImage from "@/assets/manasvi/equipment.jpg";
 
-const PHONE = "+917387602344";
-const PHONE_LABEL = "+91 7387602344";
-const SECONDARY_PHONE_LABEL = "+91 7376341891";
+const PHONE = "+917378749191";
+const PHONE_LABEL = "+91 7378749191";
 const WHATSAPP = "917378749191";
 const WHATSAPP_LABEL = "+91 7378749191";
 // Business location shared by the Google Business Profile listing.
