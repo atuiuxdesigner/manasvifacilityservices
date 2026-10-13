@@ -55,6 +55,15 @@ const MAP_EMBED_SRC =
 const GOOGLE_MAPS_PLACE_URL =
   "https://www.google.com/maps/place/?q=place_id:ChIJMzXNyE3BwjsRop7cIuWIDqQ";
 
+// Lovable-hosted asset URLs are site-relative; prefix the origin so they
+// also resolve when the site is deployed elsewhere (e.g. Netlify).
+const ASSET_ORIGIN = "https://manasvifacilityservices.lovable.app";
+const assetUrl = (path: string) =>
+  path.startsWith("/") ? `${ASSET_ORIGIN}${path}` : path;
+const teamBannerUrl = assetUrl(teamBanner.url);
+const teamPosterUrl = assetUrl(teamPoster.url);
+const manasviLogoUrl = assetUrl(manasviLogo.url);
+
 const services = [
   {
     name: "Office Cleaning",
@@ -171,7 +180,7 @@ function Brand({ onDark = false }: { onDark?: boolean }) {
       className={onDark ? "inline-flex items-center rounded-lg bg-card px-3 py-2" : "inline-flex items-center"}
     >
       <img
-        src={manasviLogo.url}
+        src={manasviLogoUrl}
         alt="Manasvi Facility Services logo"
         width={112}
         height={42}
@@ -256,14 +265,14 @@ function HomePage() {
       <main>
         <section className="relative overflow-hidden bg-hero-surface">
           <img
-            src={teamBanner.url}
+            src={teamBannerUrl}
             alt="Manasvi Facility Services team at their Pune office"
             className="absolute inset-0 hidden h-full w-full object-cover object-[70%_center] md:block"
           />
           <div className="absolute inset-0 hidden bg-hero-wash md:block" />
           <div className="md:hidden">
             <img
-              src={teamPoster.url}
+              src={teamPosterUrl}
               alt="Manasvi Facility Services team at their Pune office"
               className="max-h-[62vh] w-full object-cover object-top"
             />
