@@ -180,7 +180,7 @@ function Brand({ onDark = false }: { onDark?: boolean }) {
       className={onDark ? "inline-flex items-center rounded-lg bg-card px-3 py-2" : "inline-flex items-center"}
     >
       <img
-        src={manasviLogo.url}
+        src={manasviLogoUrl}
         alt="Manasvi Facility Services logo"
         width={112}
         height={42}
@@ -265,14 +265,14 @@ function HomePage() {
       <main>
         <section className="relative overflow-hidden bg-hero-surface">
           <img
-            src={teamBanner.url}
+            src={teamBannerUrl}
             alt="Manasvi Facility Services team at their Pune office"
             className="absolute inset-0 hidden h-full w-full object-cover object-[70%_center] md:block"
           />
           <div className="absolute inset-0 hidden bg-hero-wash md:block" />
           <div className="md:hidden">
             <img
-              src={teamPoster.url}
+              src={teamPosterUrl}
               alt="Manasvi Facility Services team at their Pune office"
               className="max-h-[62vh] w-full object-cover object-top"
             />
