@@ -11,3 +11,5 @@
 
 - Keep Phase 1 static-first; the quote form validates in-browser and hands the prepared enquiry to WhatsApp because persistent delivery is not in scope.
 - Keep navigation collapsed below 1024px, use staged tablet grids, and reserve dense multi-column layouts for wide screens so all content remains readable without horizontal overflow.
+- Hosting/deploy settings for Netlify live in `netlify.toml` at the repo root; keep its build command and publish directory matching the Vite/nitro output instead of duplicating them in chat or Netlify's UI.
+
