@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { submitQuoteToSheet } from "@/lib/quote.functions";
 import {
   ArrowRight,
   Building2,
@@ -195,36 +197,56 @@ function HomePage() {
   const [activeService, setActiveService] = useState(0);
   const [service, setService] = useState(services[0]?.name ?? "Office Cleaning");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [propertyType, setPropertyType] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const sendQuote = useServerFn(submitQuoteToSheet);
 
   function closeMenu() {
     setMenuOpen(false);
   }
 
-  function submitQuote(event: FormEvent<HTMLFormElement>) {
+  async function submitQuote(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const phone = String(data.get("phone") ?? "").replace(/\D/g, "");
-    const locality = String(data.get("locality") ?? "").trim();
-    const details = String(data.get("details") ?? "").trim();
+    if (submitting) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const get = (k: string) => String(data.get(k) ?? "").trim();
+    const payload = {
+      name: get("name"),
+      phone: get("phone").replace(/\D/g, "").replace(/^91(?=\d{10}$)/, ""),
+      email: get("email"),
+      service,
+      propertyType,
+      location: get("location"),
+      frequency,
+      message: get("message"),
+      website: get("website"),
+    };
     const nextErrors: Record<string, string> = {};
-    if (!name) nextErrors["name"] = "Please enter your name.";
-    if (phone.length !== 10) nextErrors["phone"] = "Please enter a valid 10-digit Indian mobile number.";
-    if (!locality) nextErrors["locality"] = "Please enter your area or locality.";
+    if (!payload.name) nextErrors["name"] = "Please enter your name.";
+    if (payload.phone.length !== 10) nextErrors["phone"] = "Please enter a valid 10-digit Indian mobile number.";
+    if (!payload.service) nextErrors["service"] = "Please choose a service.";
+    if (payload.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) nextErrors["email"] = "Please enter a valid email address.";
     setErrors(nextErrors);
+    setStatus("idle");
     if (Object.keys(nextErrors).length > 0) return;
 
-    const message = [
-      "Hello Manasvi Facility Services, I would like a free quote.",
-      `Name: ${name}`,
-      `Phone: +91 ${phone}`,
-      `Service: ${service}`,
-      `Area: ${locality}`,
-      details ? `Details: ${details}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    setSubmitting(true);
+    try {
+      const result = await sendQuote({ data: payload });
+      if (result.ok) {
+        setStatus("success");
+        form.reset();
+        setPropertyType("");
+        setFrequency("");
+      } else setStatus("error");
+    } catch {
+      setStatus("error");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
