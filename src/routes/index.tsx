@@ -55,6 +55,15 @@ const MAP_EMBED_SRC =
 const GOOGLE_MAPS_PLACE_URL =
   "https://www.google.com/maps/place/?q=place_id:ChIJMzXNyE3BwjsRop7cIuWIDqQ";
 
+// Lovable-hosted asset URLs are site-relative; prefix the origin so they
+// also resolve when the site is deployed elsewhere (e.g. Netlify).
+const ASSET_ORIGIN = "https://manasvifacilityservices.lovable.app";
+const assetUrl = (path: string) =>
+  path.startsWith("/") ? `${ASSET_ORIGIN}${path}` : path;
+const teamBannerUrl = assetUrl(teamBanner.url);
+const teamPosterUrl = assetUrl(teamPoster.url);
+const manasviLogoUrl = assetUrl(manasviLogo.url);
+
 const services = [
   {
     name: "Office Cleaning",
